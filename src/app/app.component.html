@@ -1,0 +1,39 @@
+
+
+<mat-sidenav-container fullscreen >
+    <mat-sidenav #sidenav1 *ngIf="islognststus">
+        <mat-nav-list>
+            <a href="javascript:;" mat-list-item>
+                <mat-icon>library_books</mat-icon>
+                course</a>
+       
+        <a href="javascript:;" mat-list-item>
+            <mat-icon>question_answer</mat-icon>
+            about</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar color="primary" *ngIf="islognststus">
+        <button mat-icon-button>
+            <mat-icon (click)="onclicksidenave()">menu</mat-icon>
+        </button>
+        <a href="javascript:;" [matMenuTriggerFor]="dropdown">Dropdown</a>
+        <mat-menu #dropdown>
+             <button mat-menu-item>Courses</button>
+             <button mat-menu-item>about</button>
+
+        </mat-menu>
+        <a href="javascript:;" mat-button (click)="onlogoutdevice()">
+            <mat-icon>account_circle</mat-icon>
+            log out
+        </a>
+    </mat-toolbar>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</mat-sidenav-container>
+
+

@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="auths">
+            <mat-card>
+                <mat-card-title *ngIf="allreadyhaveaccount">Allready have account</mat-card-title>
+                <mat-card-title *ngIf="!allreadyhaveaccount">Don't have account</mat-card-title>
+               <mat-card-content>
+                <ng-container *ngIf="allreadyhaveaccount">
+                    <form class="login"
+                    #loginform="ngForm" (ngSubmit)="onloginform(loginform)">
+                    <mat-form-field>
+                        <label for="email" class="sr-only">email</label>
+                        <input type="text" matInput name="email" placeholder="email"
+                        ngModel #loginemail="ngModel" required>
+                        <mat-error *ngIf="loginemail.errors?.['required']">
+                            These field are are mandatory
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <label for="password" class="sr-only">password</label>
+                        <input type="password" matInput name="password" placeholder="password"
+                        ngModel #loginpassword="ngModel" required>
+                        <mat-error *ngIf="loginpassword.errors?.['required']">
+                            These field are are mandatory
+                        </mat-error>
+                      </mat-form-field>
+                      <button mat-raised-button color="primary" type="submit">Create account</button>
+                  <button mat-button (click)="allreadyhaveaccount=!allreadyhaveaccount">Don't have account</button>
+
+                </form>
+                </ng-container>
+                <ng-container *ngIf="!allreadyhaveaccount">
+                    <form 
+                  class="signupform" #signupform="ngForm" (ngSubmit)="onsignupform(signupform)">
+                  <mat-form-field>
+                    <label for="email" class="sr-only">email</label>
+                    <input type="text" matInput name="email" placeholder="email"
+                    ngModel #signupemail="ngModel" required>
+                    <mat-error *ngIf="signupemail.errors?.['required']">
+                        These field are are mandatory
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <label for="password" class="sr-only">password</label>
+                    <input type="password" matInput name="password" placeholder="password"
+                    ngModel #signuppassword="ngModel" required>
+                    <mat-error *ngIf="signuppassword.errors?.['required']">
+                        These field are are mandatory
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select name="userRole" ngModel>
+                        <mat-option value="">select a userRole</mat-option>
+                        <mat-option value="teacher">teacher</mat-option>
+                        <mat-option value="student">student</mat-option>
+
+                    </mat-select>
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" type="submit">Create account</button>
+                  <button mat-button (click)="allreadyhaveaccount=!allreadyhaveaccount">Allready have account</button>
+                </form>
+                </ng-container>
+
+               </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
